@@ -1,23 +1,23 @@
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from pypdf import PdfReader, PdfWriter
 
 def merge_pdfs(pdf_paths, output_path):
-    pdf_writer = PdfFileWriter()
-
+    pdf_writer = PdfWriter()
     for pdf_path in pdf_paths:
-        pdf_reader = PdfFileReader(open(pdf_path, 'rb'))
-        for page_num in range(pdf_reader.getNumPages()):
-            pdf_writer.addPage(pdf_reader.getPage(page_num))
+        print("PDF file: ", pdf_path)
+        pdf_reader = PdfReader(pdf_path)
+        print(f"PDF file {pdf_path}: {len(pdf_reader.pages)} páginas ")
 
-    with open(output_path, 'wb') as output_pdf:
-        pdf_writer.write(output_pdf)
+        for page_num in range(len(pdf_reader.pages)):
+            pdf_writer.add_page(pdf_reader.pages[page_num])
+
+    pdf_writer.write(output_path)
 
 def split_pdf(input_pdf, output_folder):
-    pdf_reader = PdfFileReader(open(input_pdf, 'rb'))
+    pdf_reader = PdfReader(input_pdf)
 
-    for page_num in range(pdf_reader.getNumPages()):
-        pdf_writer = PdfFileWriter()
-        pdf_writer.addPage(pdf_reader.getPage(page_num))
+    for page_num in range(len(pdf_reader.pages)):
+        pdf_writer = PdfWriter()
+        pdf_writer.add_page(pdf_reader.pages[page_num])
 
         output_path = f"{output_folder}/page_{page_num+1}.pdf"
-        with open(output_path, 'wb') as output_pdf:
-            pdf_writer.write(output_pdf)
+        pdf_writer.write(output_path)
