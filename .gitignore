@@ -1,2 +1,3 @@
 pdftools_env/
 *.pyc
+__pycache__
