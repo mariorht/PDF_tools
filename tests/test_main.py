@@ -4,6 +4,15 @@ from main import app
 
 client = TestClient(app)
 
+def test_serve_merge_page():
+    response = client.get("/")
+
+    # Verifica que la respuesta tenga el código 200
+    assert response.status_code == 200
+
+    # Verifica que la respuesta sea HTML
+    assert response.headers["content-type"] == "text/html; charset=utf-8"
+
 def test_merge_pdfs():
     # Simula una carga de archivos para fusionar
     files = [
