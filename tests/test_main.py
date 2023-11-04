@@ -4,13 +4,19 @@ from main import app
 
 client = TestClient(app)
 
-def test_serve_merge_page():
+def test_serve_index_page():
     response = client.get("/")
-
-    # Verifica que la respuesta tenga el código 200
     assert response.status_code == 200
+    assert response.headers["content-type"] == "text/html; charset=utf-8"
 
-    # Verifica que la respuesta sea HTML
+def test_serve_merge_page():
+    response = client.get("/merge")
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "text/html; charset=utf-8"
+    
+def test_serve_split_page():
+    response = client.get("/split")
+    assert response.status_code == 200
     assert response.headers["content-type"] == "text/html; charset=utf-8"
 
 def test_merge_pdfs():
@@ -35,12 +41,9 @@ def test_split_pdf():
 
     response = client.post("/split_pdf/", files=file)
 
+    # Verifica que la respuesta tenga el código 200
     assert response.status_code == 200
-    assert os.path.exists("temp/page_1.pdf")
-    assert os.path.exists("temp/page_2.pdf")
-    assert os.path.exists("temp/page_3.pdf")
+    # Verifica que la respuesta sea un archivo zip
+    assert response.headers["content-type"] == "application/zip"
     
-    # Eliminar archivos temporales
-    archivos_temporales = [f for f in os.listdir('temp') if f.endswith('.pdf')]
-    for archivo in archivos_temporales:
-        os.remove(os.path.join('temp', archivo))
+

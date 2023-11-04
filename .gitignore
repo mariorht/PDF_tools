@@ -2,3 +2,4 @@ pdftools_env/
 *.pyc
 __pycache__
 temp
+output
