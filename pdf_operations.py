@@ -3,10 +3,7 @@ from pypdf import PdfReader, PdfWriter
 def merge_pdfs(pdf_paths, output_path):
     pdf_writer = PdfWriter()
     for pdf_path in pdf_paths:
-        print("PDF file: ", pdf_path)
         pdf_reader = PdfReader(pdf_path)
-        print(f"PDF file {pdf_path}: {len(pdf_reader.pages)} páginas ")
-
         for page_num in range(len(pdf_reader.pages)):
             pdf_writer.add_page(pdf_reader.pages[page_num])
 
