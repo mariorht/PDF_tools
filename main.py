@@ -1,10 +1,22 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from typing import List 
 from pdf_operations import merge_pdfs, split_pdf
 import os
 
 
 app = FastAPI()
+
+# Agrega una ruta estática para servir archivos CSS o JavaScript (opcional)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Ruta para servir la interfaz web
+@app.get("/", response_class=HTMLResponse)
+async def serve_merge_page():
+    with open("templates/merge.html", "r") as file:
+        content = file.read()
+    return HTMLResponse(content)
 
 @app.post("/merge_pdfs/")
 async def merge_uploaded_pdfs(pdf_files: List[UploadFile] = File(...)):
