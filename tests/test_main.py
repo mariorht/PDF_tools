@@ -13,9 +13,10 @@ def test_merge_pdfs():
 
     response = client.post("/merge_pdfs/", files=files)
 
+    # Verifica que la respuesta tenga el código 200
     assert response.status_code == 200
-    assert os.path.exists("temp/output.pdf")
-    os.remove("temp/output.pdf")
+    # Verifica que la respuesta sea un archivo PDF
+    assert response.headers["content-type"] == "application/pdf"
 
 def test_split_pdf():
     # Simula la carga de un archivo para dividir
