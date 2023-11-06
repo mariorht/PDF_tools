@@ -1,0 +1,7 @@
+version: '3'
+services:
+  pdf-tools:
+    build: .
+    ports:
+      - "8080:8080"
+    command: ./start_server.sh
