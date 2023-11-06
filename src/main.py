@@ -2,7 +2,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from typing import List 
-from pdf_operations import merge_pdfs, split_pdf
+from src.pdf_operations import merge_pdfs, split_pdf
 import os
 from datetime import datetime
 from zipfile import ZipFile
@@ -11,26 +11,26 @@ import shutil
 app = FastAPI()
 
 # Agrega una ruta estática para servir archivos CSS o JavaScript (opcional)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
 
 # Ruta para servir la web
 @app.get("/", response_class=HTMLResponse)
 async def serve_merge_page():
-    with open("templates/index.html", "r") as file:
+    with open("src/templates/index.html", "r") as file:
         content = file.read()
     return HTMLResponse(content)
 
 # Ruta para servir la página de fusión
 @app.get("/merge", response_class=HTMLResponse)
 async def serve_merge_page():
-    with open("templates/merge.html", "r") as file:
+    with open("src/templates/merge.html", "r") as file:
         content = file.read()
     return HTMLResponse(content)
 
 # Ruta para servir la página de división
 @app.get("/split", response_class=HTMLResponse)
 async def serve_split_page():
-    with open("templates/split.html", "r") as file:
+    with open("src/templates/split.html", "r") as file:
         content = file.read()
     return HTMLResponse(content)
 
