@@ -42,4 +42,3 @@ To run the tests, use the command `make test` or run `./run_tests.sh`.
    ```bash
    docker-compose up
 
-
