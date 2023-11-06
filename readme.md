@@ -42,4 +42,5 @@ To run the tests, use the command `make test` or run `./run_tests.sh`.
    ```bash
    docker-compose up
 
+5. Access the web interface in your browser by visiting http://localhost:8080.
 
