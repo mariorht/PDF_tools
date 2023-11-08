@@ -60,3 +60,21 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #777777;
 }
+
+
+.preview-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.file-name {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-top: 10px;
+}
