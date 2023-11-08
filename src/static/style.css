@@ -2,16 +2,51 @@ body {
     background-color: #121212;
     color: #ffffff;
     font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo del documento */
+    padding-top: 50px; /* Añade espacio para la barra de navegación en la parte superior */
+}
+
+.navbar {
+    position: fixed; /* Fija la barra de navegación en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+.navbar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.content {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 h1 {
     color: #ffffff;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 input[type="file"] {
     background-color: #333333;
     color: #ffffff;
     border: 1px solid #555555;
+    margin: 10px 0;
 }
 
 input[type="submit"] {
@@ -25,4 +60,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #777777;
 }
-
