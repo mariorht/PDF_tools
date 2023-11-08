@@ -1,5 +1,8 @@
 # PDF Tools
 
+![example workflow](https://github.com/mariorht/PDF_tools/actions/workflows/run-tests.yml/badge.svg)
+
+
 This project is a FastAPI-based API that provides operations for merging and splitting PDF files. It also includes a simple web interface for interacting with the API.
 
 ## Usage Instructions
